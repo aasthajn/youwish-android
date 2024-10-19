@@ -82,7 +82,11 @@ dependencies {
     implementation(libs.coil)
     implementation(libs.coil.compose)
 
-    testImplementation(libs.junit)
+    testImplementation (libs.junit)
+    testImplementation ("org.mockito:mockito-core:3.4.6")
+    testImplementation ("androidx.arch.core:core-testing:2.1.0")
+    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1")
+    testImplementation ("app.cash.turbine:turbine:0.11.0")
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }

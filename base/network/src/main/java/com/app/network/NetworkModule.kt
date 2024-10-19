@@ -72,7 +72,8 @@ class NetworkModule {
     }
 
     private companion object {
-        const val BASE_URL = "https://api.pokemontcg.io"
+         const val  BASE_URL = "https://api.mocklets.com/p6796/"
+        //const val BASE_URL = "https://api.pokemontcg.io"
         const val READ_TIMEOUT = 30L
         const val WRITE_TIMEOUT = 30L
         const val CONNECTION_TIMEOUT = 10L

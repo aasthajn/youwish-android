@@ -47,6 +47,7 @@ kotlinx-coroutines-test = "1.6.1"
 turbine = "0.11.0"
 annotation = "1.8.0"
 jetbrainsKotlinJvm = "1.8.0"
+androidxTestRules = "1.6.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -107,6 +108,7 @@ core-testing = { group = "androidx.arch.core", name = "core-testing", version.re
 coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinx-coroutines-test" }
 turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
 androidx-annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
+androidx-test-rules = { group = "androidx.test", name = "rules", version.ref = "androidxTestRules" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
