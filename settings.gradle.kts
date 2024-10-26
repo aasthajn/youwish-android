@@ -19,7 +19,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "PokemonCardsApp"
+rootProject.name = "YouWish"
 include(":app")
 include(":base:core")
 include(":base:database")

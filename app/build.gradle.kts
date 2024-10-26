@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.app.pokemonapp"
+    namespace = "com.app.youwish"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.app.pokemonapp"
+        applicationId = "com.app.youwish"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

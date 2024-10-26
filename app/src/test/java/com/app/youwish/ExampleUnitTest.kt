@@ -1,4 +1,4 @@
-package com.app.pokemonapp
+package com.app.youwish
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

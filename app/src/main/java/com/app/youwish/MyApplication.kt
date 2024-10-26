@@ -1,4 +1,4 @@
-package com.app.pokemonapp
+package com.app.youwish
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

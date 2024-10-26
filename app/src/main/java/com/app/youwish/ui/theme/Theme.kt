@@ -1,4 +1,4 @@
-package com.app.pokemonapp.ui.theme
+package com.app.youwish.ui.theme
 
 import android.app.Activity
 import android.os.Build

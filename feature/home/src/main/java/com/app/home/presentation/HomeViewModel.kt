@@ -20,8 +20,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 internal class HomeViewModel @Inject constructor(
-     private val cardListUseCase: GetCardListUseCase,
-     private val bannerListUseCase: GetBannerListUseCase
+    private val cardListUseCase: GetCardListUseCase,
+    private val bannerListUseCase: GetBannerListUseCase
 ) :
     ViewModel() {
     private val _mutableCardsState = MutableStateFlow<CardListUiState>(CardListUiState.Init)
@@ -37,8 +37,7 @@ internal class HomeViewModel @Inject constructor(
 
     // Publicly exposed StateFlow that combines and manages the UI state
     init {
-
-        combine(_cardDataFlow, _bannerDataFlow) { cardData, bannerData ->
+        /*combine(_cardDataFlow, _bannerDataFlow) { cardData, bannerData ->
             if (cardData.isNotEmpty() || bannerData.isNotEmpty()) {
                 CardListUiState.Success(cardData = cardData, bannerData = bannerData)
             } else {
@@ -46,55 +45,56 @@ internal class HomeViewModel @Inject constructor(
             }
         }.onEach { combinedState ->
             _uiState.value = combinedState
-        }.launchIn(viewModelScope)
+        }.launchIn(viewModelScope)*/
         getCardData()
-        getBannerData()
+        //getBannerData()
     }
 
-/*    private fun interleaveData(listA: List<CardData>, listB: List<Banner>): List<Any> {
-        val resultList = mutableListOf<Any>()
-        var indexB = 0
+    /*    private fun interleaveData(listA: List<CardData>, listB: List<Banner>): List<Any> {
+            val resultList = mutableListOf<Any>()
+            var indexB = 0
 
-        listA.forEachIndexed { index, itemA ->
-            resultList.add(itemA)
-            // After every two items from listA, add one item from listB (if available)
-            if ((index + 1) % 2 == 0 && indexB < listB.size) {
-                resultList.add(listB[indexB])
-                indexB++
+            listA.forEachIndexed { index, itemA ->
+                resultList.add(itemA)
+                // After every two items from listA, add one item from listB (if available)
+                if ((index + 1) % 2 == 0 && indexB < listB.size) {
+                    resultList.add(listB[indexB])
+                    indexB++
+                }
             }
-        }
 
-        // If there are remaining items in listB, add them to the result list
-        if (indexB < listB.size) {
-            resultList.addAll(listB.subList(indexB, listB.size))
-        }
+            // If there are remaining items in listB, add them to the result list
+            if (indexB < listB.size) {
+                resultList.addAll(listB.subList(indexB, listB.size))
+            }
 
-        return resultList
-    }*/
+            return resultList
+        }*/
 
-    private fun getCardData() {
+    internal fun getCardData() {
         //_mutableCardsState.value = CardListUiState.Loading
-        viewModelScope.launch{
+        viewModelScope.launch {
             //_mutableCardsState.value = CardListUiState.Loading
             cardListUseCase().collect {
                 when (it) {
                     is DataState.Success -> {
                         _cardDataFlow.value = it.result
-                        //_uiState.value = CardListUiState.Success(it.result, emptyList())
+                        _uiState.value = CardListUiState.Success(it.result, emptyList())
                     }
 
                     is DataState.Error -> {
-                        _uiState.value = CardListUiState.Error(it.exception.message)
+                        //_mutableCardsState.value = CardListUiState.Error(it.exception.errorMessage)
+                        _uiState.value = CardListUiState.Error(it.exception.errorMessage)
                     }
 
                     is DataState.Loading -> {
                         //_mutableCardsState.value = CardListUiState.Loading
+                        _uiState.value = CardListUiState.Loading
                     }
                 }
 
             }
         }
-
     }
 
     private fun getBannerData() {
@@ -112,10 +112,9 @@ internal class HomeViewModel @Inject constructor(
                     }
 
                     is DataState.Loading -> {
-                        //  _mutableCardsState.value = CardListUiState.Loading
+                        //  _uiState.value = CardListUiState.Loading
                     }
                 }
-
             }
         }
     }

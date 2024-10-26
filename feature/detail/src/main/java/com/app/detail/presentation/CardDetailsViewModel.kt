@@ -19,7 +19,6 @@ class CardDetailViewModel @Inject constructor(
 ) :
     ViewModel() {
 
-
     val cardId = savedStateHandle[cardIdArg] ?: "dp3-1"
 
     private val _mutableCardDetails = MutableStateFlow<CardDetailUiState>(CardDetailUiState.Init)
@@ -32,7 +31,6 @@ class CardDetailViewModel @Inject constructor(
 
     private fun getCardDetails() {
         viewModelScope.launch {
-            _mutableCardDetails.value = CardDetailUiState.Loading
             cardDetailUseCase(cardId).collect {
                 when (it) {
                     is DataState.Success -> {

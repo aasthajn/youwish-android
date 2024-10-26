@@ -1,4 +1,4 @@
-package com.app.pokemonapp
+package com.app.youwish
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController

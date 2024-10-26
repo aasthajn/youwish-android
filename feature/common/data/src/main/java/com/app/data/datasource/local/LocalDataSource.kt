@@ -9,4 +9,5 @@ interface LocalDataSource {
     suspend fun delete()
     suspend fun getCardDetails(cardId: String): CardsDBEntity?
     suspend fun insertCard(cardsDBEntity: CardsDBEntity)
+
 }

@@ -1,19 +1,13 @@
 *.iml
 .gradle
 /local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
+/.idea
 .DS_Store
 /build
 /captures
 .externalNativeBuild
 .cxx
 local.properties
-/.idea/.gitignore
 /app/.gitignore
 /base/core/.gitignore
 /base/database/.gitignore
@@ -28,3 +22,4 @@ local.properties
 /feature/common/data/.gitignore
 /feature/common/domain/.gitignore
 
+/app/build/

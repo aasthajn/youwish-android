@@ -16,6 +16,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
@@ -23,7 +24,9 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.app.domain.model.CardData
 import com.app.home.presentation.CardListUiState
+import com.app.ui.ErrorMessage
 import com.app.ui.ErrorUI
+import com.app.ui.Message
 import com.app.ui.ShimmerEffect
 
 
@@ -31,12 +34,18 @@ import com.app.ui.ShimmerEffect
 internal fun HomeUI(
     modifier: Modifier,
     cardUIState: CardListUiState,
-    onSelected: (String) -> Unit
+    onSelected: (String) -> Unit,
+    onClickRetry: () -> Unit
 ) {
     when (cardUIState) {
         is CardListUiState.Loading -> ShimmerEffect()
-        is CardListUiState.Error -> ErrorUI(message = cardUIState.message)
-        is CardListUiState.Init -> ErrorUI(message = "Initialising")
+        is CardListUiState.Error -> ErrorMessage(
+            message = cardUIState.message,
+            modifier = modifier,
+            onClickRetry
+        )
+
+        is CardListUiState.Init -> Message(message = "Initialising",modifier = modifier)
         is CardListUiState.Success -> {
             LazyColumn(modifier = modifier) {
 
